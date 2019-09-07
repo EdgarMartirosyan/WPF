@@ -1,0 +1,40 @@
+﻿<Window x:Class="_07_IncCanves.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_07_IncCanves"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="22"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="5" Orientation="Horizontal">
+            <TextBlock Margin="5" Text="Режим редактирования: " />
+            <ComboBox Name="lstEditingMode" 
+                      VerticalAlignment="Center" 
+                      HorizontalAlignment="Stretch" 
+                      Margin="0,0,10,0" />
+        </StackPanel>
+        <InkCanvas Name="inkCanvas" 
+                   Grid.Row="1" 
+                   Background="LightBlue" 
+                   EditingMode="{Binding ElementName=lstEditingMode, Path=SelectedItem}" 
+                   Gesture="inkCanvas_Gesture">
+
+            <!--<Button InkCanvas.Left="10" InkCanvas.Top="10">Button</Button>
+
+            <TextBox InkCanvas.Left="100" InkCanvas.Top="32">TextBox</TextBox>-->
+
+        </InkCanvas>
+        <TextBox Name="gestureName" 
+                 HorizontalAlignment="Stretch" 
+                 VerticalAlignment="Bottom" 
+                 Grid.Row="2" />
+
+
+    </Grid>
+</Window>

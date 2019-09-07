@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <StackPanel >
+        <Rectangle Fill="#FFF4F4F5" Height="100" Stroke="Black"
+                   MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave"/>
+        <Rectangle Fill="#FFF4F4F5" Height="100" Stroke="Black" Margin="0,10,0,0"
+                   MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave"/>
+
+    </StackPanel >
+
+
+
 </Window>

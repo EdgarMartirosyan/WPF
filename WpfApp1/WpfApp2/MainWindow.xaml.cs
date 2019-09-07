@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1
+namespace WpfApp2
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,14 +25,9 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void Rectangle_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            (sender as Rectangle).Fill = Brushes.AliceBlue;
-        }
-
-        private void Rectangle_MouseLeave(object sender, MouseEventArgs e)
-        {
-            (sender as Rectangle).Fill = Brushes.Blue;
+            txtAnswer.Text = Class1.GetRandomAnswer();
         }
     }
 }
