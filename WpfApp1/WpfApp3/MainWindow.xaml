@@ -10,7 +10,11 @@
         <Button Content="Creat XML" HorizontalAlignment="Left" Margin="47,51,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click"/>
         <Button Content="Read XML " HorizontalAlignment="Left" Margin="158,51,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_1"/>
         <DataGrid AutoGenerateColumns="True" Name="datagrid1" CanUserAddRows="True" 
-            HorizontalAlignment="Left" Height="283" Margin="47,111,0,0" VerticalAlignment="Top" Width="686"/>
+            HorizontalAlignment="Left" Height="129" Margin="47,111,0,0" VerticalAlignment="Top" Width="686"/>
+        <Button Content="new Read" HorizontalAlignment="Left" Margin="295,51,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_2"/>
+        <TextBox Name="textbox1" HorizontalAlignment="Left" Height="115" Margin="47,271,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="286"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="500,51,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+        <ListBox Name="listbox1" HorizontalAlignment="Left" Height="100" Margin="411,271,0,0" VerticalAlignment="Top" Width="263"/>
 
 
 

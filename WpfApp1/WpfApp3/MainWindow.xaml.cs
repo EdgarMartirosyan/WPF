@@ -95,5 +95,44 @@ namespace WpfApp3
             datagrid1.ItemsSource = p1;
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var doc = new XmlDocument();
+            doc.Load("books.xml");
+            XmlNode node = doc.DocumentElement;
+            //datagrid1.ItemsSource = node.LocalName;
+           // textbox1.Text = node.LocalName;
+            MessageBox.Show("reading in process");
+            foreach (XmlNode books in node.ChildNodes)
+            {
+                Console.WriteLine("Found Book:");
+                foreach (XmlNode book in books.ChildNodes)
+                {
+                    textbox1.Text=book.Name  + book.InnerText;
+                    
+                }
+
+
+                // Напечатает сначала строку Title-150, затем Title-2150.
+                // Эти строки являются слиянием текста двух узлов корневого элемента.
+                //    Console.WriteLine(books.InnerText);
+                
+            }
+          
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            FileStream stream = new FileStream("books.xml", FileMode.Open);
+
+            XmlTextReader reader = new XmlTextReader(stream);
+            while (reader.Read())
+            {
+               // textbox1.Text = reader.NodeType.ToString();
+               // listbox1.ItemsSource = reader.Value;
+            }
+            listbox1.ItemsSource = reader.Name;
+            reader.Close();
+        }
     }
 }
