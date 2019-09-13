@@ -5,20 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Creat XML" HorizontalAlignment="Left" Margin="47,51,0,0" VerticalAlignment="Top" Width="94" Click="Button_Click"/>
-        <Button Content="Read XML " HorizontalAlignment="Left" Margin="158,51,0,0" VerticalAlignment="Top" Width="97" Click="Button_Click_1"/>
-        <DataGrid AutoGenerateColumns="True" Name="datagrid1" CanUserAddRows="True" 
-            HorizontalAlignment="Left" Height="129" Margin="47,111,0,0" VerticalAlignment="Top" Width="686"/>
-        <Button Content="new Read" HorizontalAlignment="Left" Margin="295,51,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_2"/>
-        <TextBox Name="textbox1" HorizontalAlignment="Left" Height="115" Margin="47,271,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="286"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="500,51,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
-        <ListBox Name="listbox1" HorizontalAlignment="Left" Height="100" Margin="411,271,0,0" VerticalAlignment="Top" Width="263"/>
+        Title="TestProject" Height="Auto" Width="750" Icon="Dario-Arnaez-Genesis-3G-User-Files.ico">
+
+    <ScrollViewer>
+
+
+        <StackPanel>
+            <WrapPanel Background="LightSteelBlue" Name="pnlList">
+                <CheckBox Margin="5" IsChecked="True">Panel1</CheckBox>
+                <CheckBox Margin="5" IsChecked="True">datagrid1</CheckBox>
+                <CheckBox Margin="5" IsChecked="True">textbox1</CheckBox>
+                <CheckBox Margin="5" IsChecked="True">Panel4</CheckBox>
+                <CheckBox Margin="5" IsChecked="True">Panel2</CheckBox>
+            </WrapPanel>
+
+            <WrapPanel Name="panel">
+                <StackPanel Name="Panel1">
+                    <WrapPanel Orientation="Horizontal"  >
+
+                        <Button  Content="Creat XML"  Padding="5" Margin="10"  Click="Button_Click"/>
+                        <Button  Content="Read XML "  Padding="5" Margin="10"   Click="Button_Click_1"/>
+                        <Button  Content="Read test_1"   Padding="5" Margin="10"  Click="Button_Click_2" />
+                        <Button  Content="Read test_2"   Padding="5" Margin="10"   Click="Button_Click_3" />
+
+                    </WrapPanel>
+                </StackPanel>
+                <StackPanel>
+                    <DataGrid AutoGenerateColumns="True" Name="datagrid1" CanUserAddRows="True" 
+            HorizontalAlignment="Left" Height="129" Margin="10" VerticalAlignment="Top" Width="686"/>
+                    <TextBox Name="textbox1"  HorizontalAlignment="Left" Height="115" Margin="10" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="686" />
+                    <StackPanel Name="Panel2">
+
+                        <TabControl >
+                            <TabItem Header="Page1" >
+                                <Button Padding="100,50,100,50">Wait a week </Button>
+                            </TabItem>
+                            <TabItem Header="Page2" >
+                                <Button Padding="100,50,100,50">Wait a week</Button>
+                            </TabItem>
+                        </TabControl>
+
+                    </StackPanel>
+
+                    <ProgressBar Name="Panel4" IsIndeterminate="True" Height="10" Margin="5" VerticalAlignment="Bottom" ></ProgressBar>
+                </StackPanel>
 
 
 
-    </Grid>
+            </WrapPanel>
+
+
+        </StackPanel>
+
+    </ScrollViewer>
 
 
 </Window>

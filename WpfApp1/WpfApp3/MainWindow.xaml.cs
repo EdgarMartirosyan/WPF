@@ -30,6 +30,28 @@ namespace WpfApp3
         public MainWindow()
         {
             InitializeComponent();
+            AddHandler(CheckBox.CheckedEvent, new RoutedEventHandler(chk_Checked));
+            AddHandler(CheckBox.UncheckedEvent, new RoutedEventHandler(chk_Unchecked));
+        }
+        private void chk_Checked(object sender, RoutedEventArgs e)
+        {
+            // Копируем ссылку на используемый CheckBox.
+            // OriginalSource - свойство содержащее отправителя события.
+            CheckBox chk = e.OriginalSource as CheckBox;
+
+            // При помощи системного класса LogicalTreeHelper и его метода FindLogicalNode(),
+            // можно выполнить поиск какого либо элемента в XAML коде элемента переданого в аргументы по имени.            
+            DependencyObject dpObj = LogicalTreeHelper.FindLogicalNode(panel, chk.Content.ToString());
+
+            // Показываем элемент который мы получили. (Panel1, Panel2, и т.д.)
+            ((FrameworkElement)dpObj).Visibility = Visibility.Visible;
+        }
+
+        private void chk_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox chk = e.OriginalSource as CheckBox;
+            DependencyObject obj = LogicalTreeHelper.FindLogicalNode(panel, chk.Content.ToString());
+            ((FrameworkElement)obj).Visibility = Visibility.Collapsed;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -97,42 +119,33 @@ namespace WpfApp3
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var doc = new XmlDocument();
-            doc.Load("books.xml");
-            XmlNode node = doc.DocumentElement;
-            //datagrid1.ItemsSource = node.LocalName;
-           // textbox1.Text = node.LocalName;
-            MessageBox.Show("reading in process");
-            foreach (XmlNode books in node.ChildNodes)
-            {
-                Console.WriteLine("Found Book:");
-                foreach (XmlNode book in books.ChildNodes)
-                {
-                    textbox1.Text=book.Name  + book.InnerText;
-                    
-                }
+            XmlDocument document = new XmlDocument();
+            document.Load("books.xml");
+            textbox1.Text = document.InnerText+":::::::"+ document.InnerXml;
+            
 
 
-                // Напечатает сначала строку Title-150, затем Title-2150.
-                // Эти строки являются слиянием текста двух узлов корневого элемента.
-                //    Console.WriteLine(books.InnerText);
-                
-            }
-          
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            FileStream stream = new FileStream("books.xml", FileMode.Open);
+            
 
-            XmlTextReader reader = new XmlTextReader(stream);
-            while (reader.Read())
+            var req = (HttpWebRequest)WebRequest.Create("https://www.nairi-insurance.am/");
+           
+            req.Method = "GET";
+
+            try
             {
-               // textbox1.Text = reader.NodeType.ToString();
-               // listbox1.ItemsSource = reader.Value;
+                var resp = (HttpWebResponse)req.GetResponse();
+                textbox1.Clear();
+                string headersText = resp.Headers.ToString();
+                textbox1.Text += headersText;
             }
-            listbox1.ItemsSource = reader.Name;
-            reader.Close();
+            catch (WebException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
     }
 }
